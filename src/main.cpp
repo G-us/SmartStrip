@@ -1,8 +1,6 @@
 
 #define DECODE_NEC          // Includes Apple and Onkyo
 
-
-
 #include <Arduino.h>
 
 #include "PinDefinitionsAndMore.h" // Define macros for input and output pin etc.
@@ -166,10 +164,12 @@ void setup() {
     // Just to know which program is running on my Arduino
     Serial.println(F("START " __FILE__ " from " __DATE__ "\r\nUsing library version " VERSION_IRREMOTE));
     IrSender.begin(ENABLE_LED_FEEDBACK);
+
     Serial.setTimeout(5000);
 }
 
 void loop() {
+
     input = Serial.readStringUntil('#');
     Serial.println("The input is: " + input);
     SendIRCommand(input);
