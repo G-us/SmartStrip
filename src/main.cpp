@@ -12,7 +12,7 @@ String input;
 void SendIRCommand(String input){
   if (input == "OnOff"){
       IrSender.sendNEC(IRAddress, OnOff, 0);
-      Serial.println("OnOff");
+      Serial.println("OnOff, uno");
     }
     if (input == "Skip"){
       IrSender.sendNEC(IRAddress, Skip, 0);

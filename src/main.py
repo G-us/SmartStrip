@@ -1,12 +1,18 @@
 import PySimpleGUI as sg
 import serial
 import json
+import serial.tools.list_ports
 
 f = open('/home/henryp/VSCodeProjects/SmartStrip/src/Commands.json')
 
 commands = json.load(f)
 
-ser = serial.Serial('/dev/ttyUSB0', 115200)
+
+COM_Port = list(serial.tools.list_ports.comports())[0]# may need tweaking to match new arduinos
+
+COM_Port = COM_Port.device
+
+ser = serial.Serial(str(COM_Port), 115200)
 print("Connected to: " + ser.portstr)
 
 # Define the maximum number of buttons per row
